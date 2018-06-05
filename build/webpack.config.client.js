@@ -24,7 +24,9 @@ const defaultPluins=[
             }
         }),
         //配置html
-        new HTMLPlugin(),
+        new HTMLPlugin({
+          template:path.join(__dirname,"./template.html")
+        }),
 ]
 
 const devServer = {
@@ -34,8 +36,11 @@ const devServer = {
   overlay: {
     errors: true,
   },
+  historyApiFallback: {//这个配置是解决了router 的mode浏览器重新刷新后没有映射
+    index : '/public/index.html'//这个是html编译后形成的index.html默认会在跟目录下，跟ouput输出的publicPath有关
+  },
   // //打开
-  open: true,
+ // open: true,
   //  //实时更新
   hot: true,
 

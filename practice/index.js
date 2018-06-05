@@ -6,4 +6,9 @@
 //   el: '#root',
 //   template: '<div>this is me </div>'
 // })
-import './instance/index.js'
+// import './instance/index.js'
+// import './lifestyle/index.js'
+// import './data-binding/index.js'
+// import './computed/index.js'
+// import './directive/index.js'
+import './component/index.js'

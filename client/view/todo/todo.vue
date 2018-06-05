@@ -20,6 +20,7 @@
       @toggle="mytoggle"
       @myclearAllCompleted="myclearAllCompleted"
       />
+      <!-- <router-view></router-view>嵌套路由时使用 -->
   </section>
 </template>
 <script>
@@ -30,6 +31,26 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  beforeRouteEnter (to, from, next) { // 这里一般拿不到this
+    // console.log(this) // 在这里拿到数据并塞到模板中
+    console.log('beforeRouterEnter Todo')
+    next(vm => {
+      console.log('after enter this.id is', vm.id)
+    })
+  },
+  beforeRouteUpdate (to, from, next) { // 只有在相同的路由的时候，列如列表的详情id不同
+    console.log('beforeRouteUpdate todo')
+    console.log(this.id)
+    next()
+  },
+  beforeRouteLeave (to, from, next) { // 这进行弹框是否要离开
+    console.log('beforeRouteLeave todo')
+    if (global.confirm('are you ?')) {
+      next()
+    }
+    // next()
+  },
+  props: ['id'],
   data () {
     return {
       todos: [],
@@ -42,8 +63,11 @@ export default {
     Item,
     Tabs
   },
-  mounted () {
+  mounted () { // 这里如果处理不同id的刷新就不会刷新id
     // this.my();
+    console.log('todo mounted')
+    // console.log(this.id)
+    // console.log(this.$route) // 每个组件都可以使用到的
   },
   computed: {
     filteredTodos () {
@@ -86,5 +110,3 @@ export default {
 <style lang="stylus" scoped>
 
 </style>
-
-
