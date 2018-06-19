@@ -13,6 +13,8 @@ const ExtractPlugin = require('extract-text-webpack-plugin');
 //var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 //引进基础配置
 const baseConfig = require('./webpack.config.base');
+// 服务端
+const VueClientPlugin =require('vue-server-renderer/client-plugin')
 //获取那个环境
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -27,6 +29,8 @@ const defaultPluins=[
         new HTMLPlugin({
           template:path.join(__dirname,"./template.html")
         }),
+        // 生成服务端文件
+        new VueClientPlugin()
 ]
 
 const devServer = {

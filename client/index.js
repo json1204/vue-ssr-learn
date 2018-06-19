@@ -16,6 +16,31 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 const router = createRouter()
 const store = createStore() // 每次都是一个新的跟data类型
+// 动态加载模块
+store.registerModule('c', {
+  state: {
+    text: 3
+  }
+})
+// store api
+// store.unregisterModule('c') // 解绑模块
+
+// store.watch((state) => state.count + 1, (newCount) => {
+//   // 只要state有改变就会执行里面
+//   console.log('newCount:', newCount)
+// })
+
+// vuex组件 每次mutation变化都会触发
+// store.subscribe((mutation, state) => {
+//   console.log(mutation.type) // 哪个函数被调用
+//   console.log(mutation.payload) // 调用的数值
+// })
+
+store.subscribeAction((action, state) => {
+  console.log(action.type) // 哪个函数被调用
+  console.log(action.payload) // 变化的参数 ，传入
+})
+// const
 // const root = document.createElement('div')
 // document.body.appendChild(root)
 // 全局导航守卫 每次只要路由变化了，都会三个都触发

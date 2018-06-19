@@ -11,5 +11,5 @@ module.exports=(isDev)=>{
     //   'docs':docsLoader
     // }
     //hotReload:false,//css热重载  vue会重新刷新//根据环境变量生成
-  } 
+  }
 }

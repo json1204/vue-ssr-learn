@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     filteredTodos () {
-    // 过滤全部
+      // 过滤全部
       if (this.filter === 'all') {
         return this.todos
       }

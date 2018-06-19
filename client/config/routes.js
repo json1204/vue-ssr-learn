@@ -7,7 +7,7 @@ export default[
     redirect: '/app'// 重定向
   },
   {
-    path: '/app/:id', // app/xxx
+    path: '/app', // app/xxx
     // path: '/app/:id', // app/xxx
     props: true, // 设置为true时，可以在组件本组件Todo通过props获取:后的值，而不用通过this.$route获取时通过props获取
     // props: {
